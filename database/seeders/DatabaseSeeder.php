@@ -32,11 +32,13 @@ class DatabaseSeeder extends Seeder
         Reservation::factory($quantity())->create();
 
         $restaurants = Restaurant::all();
-        $products = Product::all()->max(30);
+        $products = function () {
+            $random = rand(30, 50);
+            return Product::all()->random($random)->pluck('id')->toArray();
+        };
+//        $products = Product::all()->random(rand(30, 60))->pluck('id')->toArray();
         foreach ($restaurants as $restaurant) {
-            foreach ($products as $product) {
-                $restaurant->restaurantProducts()->attach($product->id);
-            }
+                $restaurant->restaurantProducts()->attach($products());
         }
     }
 }
