@@ -30,5 +30,14 @@ class DatabaseSeeder extends Seeder
         };
         Product::factory($quantity())->create();
         Reservation::factory($quantity())->create();
+
+        $restaurants = Restaurant::all();
+//        $products = Product::all();
+        foreach ($restaurants as $restaurant) {
+//            foreach($products as $product) {
+//                $restaurant->products()->attach($product);
+//            }
+            dump($restaurant->products)
+        }
     }
 }
