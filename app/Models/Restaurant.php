@@ -10,10 +10,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Restaurant extends Model
 {
     use HasFactory;
-
     protected $guarded = [
         'id',
     ];
+
+    public $timestamps = false;
 
     public function city(): BelongsTo
     {
