@@ -32,12 +32,11 @@ class DatabaseSeeder extends Seeder
         Reservation::factory($quantity())->create();
 
         $restaurants = Restaurant::all();
-//        $products = Product::all();
+        $products = Product::all()->max(30);
         foreach ($restaurants as $restaurant) {
-//            foreach($products as $product) {
-//                $restaurant->products()->attach($product);
-//            }
-            dump($restaurant->products)
+            foreach ($products as $product) {
+                $restaurant->restaurantProducts()->attach($product->id);
+            }
         }
     }
 }
