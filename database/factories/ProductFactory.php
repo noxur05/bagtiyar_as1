@@ -13,14 +13,12 @@ class ProductFactory extends Factory
 {
     public function definition(): array
     {
-        $restaurant = Restaurant::inRandomOrder()->first();
         $category = Category::inRandomOrder()->first();
 
         return [
             'name' => fake()->unique()->streetName(),
             'description' => fake()->text(),
             'price' => fake()->numberBetween(10, 999),
-            'restaurant_id' => $restaurant->id,
             'category_id' => $category->id,
         ];
     }
