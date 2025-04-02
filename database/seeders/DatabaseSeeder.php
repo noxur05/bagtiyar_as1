@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Product;
+use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,5 +25,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Restaurant::factory(20)->create();
+        $quantity = function () {
+            return random_int(50, 100);
+        };
+        Product::factory($quantity())->create();
+        Reservation::factory($quantity())->create();
     }
 }
