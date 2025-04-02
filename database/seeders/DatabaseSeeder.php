@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Bagtiyar Rejepov',
             'email' => 'rejepowbagtiyar05@gmail.com',
+            'password' => bcrypt('admin')
         ]);
 
         Restaurant::factory(20)->create();
