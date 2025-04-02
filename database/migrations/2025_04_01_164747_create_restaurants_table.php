@@ -16,8 +16,7 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('address', 255);
             $table->text('description');
-            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
-            $table->primary(['city_id']);
+            $table->foreignId('city_id')->index()->constrained('cities')->cascadeOnDelete();
         });
     }
 
